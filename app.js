@@ -1,20 +1,22 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 
-// Declaro una variable llamada nombresAmigos y asigno un arreglo vacío para que el usuario pueda comenzar agregando nombres.
+// Nota 1: Crear un array para almacenar los nombres
 
 let nombresAmigos = [];
 
-// Declaro una función llamada agregarAmigo y le agrego los siguientes códigos para que el usuario pueda interactuar con el input y el botón "añadir".
-// Con esta función junto con la función "mostrarAmigos", se visualizará la lista de nombres de amigos que el usuario vaya añadiendo.
+// Nota 2: Implementa una función para agregar amigos
 
 function agregarAmigo() {
     let añadirAmigo = document.getElementById("amigo").value.trim();
 
     if (añadirAmigo.length === 0) {
-        alert ("Por favor, inserte un nombre");
+        alert ("Agregue un nombre por favor");
     }
     else if (nombresAmigos.includes(añadirAmigo)) {
         alert("Ese nombre ya fue agregado");
+    }
+    else if (añadirAmigo.length < 3) {
+        alert("Ingrese un nombre válido con al menos 3 caracteres")
     }
     else {
         nombresAmigos.push(añadirAmigo);
@@ -25,27 +27,25 @@ function agregarAmigo() {
     return;
 }
 
-// Declaro otra función llamada mostrarAmigos y le agrego los siguientes comandos para actualizar la lista de nombres.
-// Luego ejecuto esta función en la función "agregarAmigo" para visualizar la lista de nombres.
+// Nota 3: Implementa una función para actualizar la lista de amigos
 
 function mostrarAmigos() {  
-    let mostrarLista = document.getElementById("listaAmigos");
-    mostrarLista.innerHTML = "";
+    let actualizarLista = document.getElementById("listaAmigos");
+    actualizarLista.innerHTML = "";
 
-    for (let recorrerArreglo = 0; recorrerArreglo < nombresAmigos.length; recorrerArreglo++) {
-        let crearElemento = document.createElement("li");
-        crearElemento.textContent = nombresAmigos[recorrerArreglo];
-        mostrarLista.appendChild(crearElemento);
+    for (let arreglo = 0; arreglo < nombresAmigos.length; arreglo++) {
+        let añadirElemento = document.createElement("li");
+        añadirElemento.textContent = nombresAmigos[arreglo];
+        actualizarLista.appendChild(añadirElemento);
     }
     return;
 }
 
-// Declaro la función sortearAmigo y con el siguiente código, el usuario al hacer clic en el botón "sortear amigo" se ejecutará la función.
-// Esta función permite que el sistema elija aleatoriamente entre la lista de amigos que el usuario añadió y le mostrará el resultado correspondiente.
+// Nota 4: Implementa una función para sortear los amigos
 
 function sortearAmigo() {
     if (nombresAmigos.length === 0) {
-        alert("Agregue un nombre antes de sortear");
+        alert("Agregue un nombre antes de realizar el sorteo");
         return;
     }
 
